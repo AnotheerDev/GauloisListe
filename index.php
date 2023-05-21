@@ -18,7 +18,8 @@
         $db = new PDO('mysql:host=localhost;dbname=gaulois', 'root', '');
 
         // Exécution de la requête SELECT
-        $results = $db->query('SELECT * FROM personnage');
+        $results = $db->query('SELECT personnage.*, lieu.nom_lieu, specialite.nom_specialite FROM personnage LEFT JOIN lieu ON personnage.id_lieu = lieu.id_lieu LEFT JOIN specialite ON personnage.id_specialite = specialite.id_specialite');
+
 
         // Affichage du début du tableau HTML avec les en-têtes des colonnes
         echo '<table>';
@@ -32,8 +33,8 @@
             echo '<td>' . $row['nom_personnage'] . '</td>';
             echo '<td>' . $row['adresse_personnage'] . '</td>';
             echo '<td>' . $row['image_personnage'] . '</td>';
-            echo '<td>' . $row['id_lieu'] . '</td>';
-            echo '<td>' . $row['id_specialite'] . '</td>';
+            echo '<td>' . ($row['nom_lieu'] ?? 'Inconnu') . '</td>';
+            echo '<td>' . ($row['nom_specialite'] ?? 'Inconnu') . '</td>';
             echo '</tr>';
         }
 
