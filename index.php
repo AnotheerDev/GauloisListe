@@ -31,7 +31,7 @@
             // Affichage des valeurs de chaque colonne dans une cellule du tableau
             echo '<td>' . $row['id_personnage'] . '</td>';
             echo '<td>' . $row['nom_personnage'] . '</td>';
-            echo '<td>' . $row['adresse_personnage'] . '</td>';
+            echo '<td>' . ($row['adresse_personnage'] ?? 'Inconnu') . '</td>';
             echo '<td>' . $row['image_personnage'] . '</td>';
             echo '<td>' . ($row['nom_lieu'] ?? 'Inconnu') . '</td>';
             echo '<td>' . ($row['nom_specialite'] ?? 'Inconnu') . '</td>';
